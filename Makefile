@@ -23,7 +23,7 @@ define Package/luci-app-onliner/postinst
 #!/bin/sh
 	rm -f /tmp/luci-indexcache
 	rm -f /tmp/luci-modulecache/*
-	chmod -R 755 /usr/bin/onliner/*
+	chmod -R 755 /usr/share/onliner/*
 exit 0
 endef
 include $(TOPDIR)/feeds/luci/luci.mk
