@@ -12,4 +12,6 @@ function set_nlbw()
 	else
 		io.popen("/usr/share/onliner/setnlbw.sh &")
 	end
+	luci.http.prepare_content("application/json")
+	luci.http.write('')
 end

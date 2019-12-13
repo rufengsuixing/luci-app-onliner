@@ -355,11 +355,11 @@ function fetchData(period)
 				one=trafficData["data"][i];
 				for (j=k;j<ll;j++){
 					if (one[0]==bakdataold[j][0] && one[1]==bakdataold[j][1] && one[2]==bakdataold[j][2] && one[3]==bakdataold[j][3] && one[4]==bakdataold[j][4] ){
-						trafficData["data"][i][5]-=bakdataold[j][5];
-						trafficData["data"][i][6]-=bakdataold[j][6];
-						trafficData["data"][i][7]-=bakdataold[j][7];
-						trafficData["data"][i][8]-=bakdataold[j][8];
-						trafficData["data"][i][9]-=bakdataold[j][9];
+						one[5]=(one[5]-bakdataold[j][5])/2;
+						one[6]=(one[6]-bakdataold[j][6])/2;
+						one[7]=(one[7]-bakdataold[j][7])/2;
+						one[8]=(one[8]-bakdataold[j][8])/2;
+						one[9]=(one[9]-bakdataold[j][9])/2;
 						k=j+1;
 						break;
 					}
@@ -881,7 +881,7 @@ function bubbleDismiss()
 	cbi_t_add('nlbw', 'layer7');
 	cbi_t_add('nlbw', 'ipv6');
 	cbi_t_add('nlbw', 'export');
-
+	fetchData('');
 	XHR.get('<%=url("admin/nlbw/list")%>', null, function(xhr, res) {
 
 		xhr.open('GET', 'https://raw.githubusercontent.com/jow-/oui-database/master/oui.json', true);
@@ -892,8 +892,6 @@ function bubbleDismiss()
 
 				if (res !== null && typeof(res) === 'object' && (res.length % 3) === 0)
 					ouiData = res;
-
-				fetchData('');
 			}
 		};
 		xhr.send(null);
