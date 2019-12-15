@@ -373,7 +373,12 @@ function fetchData(period)
 		for (var i = 0; i < addrs.length; i++)
 			if (ipAddrs.indexOf(addrs[i].ip) < 0)
 				ipAddrs.push(addrs[i].ip);
-
+		if (hostNames.length == 0){
+			XHR.get('<%=url("admin/nlbw/ptr")%>/' + ipAddrs.join('/'), null, function(xhr, res) {
+				if (res !== null && typeof(res) === 'object')
+					hostNames = res;
+			});
+		}
 		renderHostData();
 		renderLayer7Data();
 		renderIPv6Data();
@@ -896,10 +901,6 @@ function bubbleDismiss()
 		};
 		xhr.send(null);
 	});
-	XHR.get('<%=url("admin/nlbw/ptr")%>/' + ipAddrs.join('/'), null, function(xhr, res) {
-			if (res !== null && typeof(res) === 'object')
-				hostNames = res;
-		});
 //]]></script>
 
 <%+footer%>
