@@ -357,7 +357,7 @@ function fetchData(period)
 		if (res !== null && typeof(res) === 'object' && typeof(res.columns) === 'object' && typeof(res.data) === 'object')
 			trafficData = res;
 		trafficData["data"].sort();
-		bakdatanew = $.extend(true, {}, trafficData["data"]);
+		bakdatanew = JSON.parse(JSON.stringify(trafficData["data"]));
 		if (bakdataold){
 			var j=0;
 			var k=j;
