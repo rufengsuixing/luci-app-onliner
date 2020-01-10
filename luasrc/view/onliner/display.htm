@@ -361,7 +361,7 @@ function fetchData(period)
 		if (bakdataold){
 			var j=0;
 			var k=j;
-			var ll=Object.getOwnPropertyNames(bakdataold).length;
+			var ll=bakdataold.length;
 			for (i=0,l=trafficData["data"].length; i<l ; i++){
 				one=trafficData["data"][i];
 				for (j=k;j<ll;j++){
